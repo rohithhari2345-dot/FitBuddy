@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-head">
+  <div><span class="eyebrow">ADMIN VIEW</span><h2>Registered users & plans</h2></div>
+</div>
+<section class="card table-wrap">
+{% if users %}
+<table>
+<thead><tr><th>ID</th><th>User</th><th>Age</th><th>Goal</th><th>Intensity</th><th>Original</th><th>Updated</th><th>Feedback</th></tr></thead>
+<tbody>
+{% for user in users %}
+<tr>
+<td>{{ user.user_id }}</td><td>{{ user.username }}</td><td>{{ user.age }}</td>
+<td>{{ user.goal }}</td><td>{{ user.intensity }}</td>
+<td><details><summary>View</summary><pre>{{ user.original_plan }}</pre></details></td>
+<td>{% if user.updated_plan %}<details><summary>View</summary><pre>{{ user.updated_plan }}</pre></details>{% else %}—{% endif %}</td>
+<td>{{ user.feedback or "—" }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% else %}<p>No users yet. Generate a plan from the home page.</p>{% endif %}
+</section>
+{% endblock %}

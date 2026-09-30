@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <span class="eyebrow">AI-POWERED WELLNESS</span>
+  <h2>Build a practical 7-day workout plan.</h2>
+  <p>Enter a profile, generate a plan, then send feedback to revise it.</p>
+</section>
+
+<section class="card">
+  <h3>Your profile</h3>
+  <form action="/generate-workout" method="post" class="form-grid">
+    <label>Name<input name="username" required minlength="2" maxlength="100" placeholder="Alex"></label>
+    <label>User ID<input name="user_id" required maxlength="100" placeholder="user-001"></label>
+    <label>Age<input name="age" type="number" min="18" max="100" required></label>
+    <label>Weight (kg)<input name="weight" type="number" min="1" max="499" step="0.1" required></label>
+    <label class="full">Fitness goal<input name="goal" required maxlength="100" placeholder="General fitness"></label>
+    <label>Workout intensity
+      <select name="intensity" required>
+        <option value="low">Low</option>
+        <option value="moderate" selected>Moderate</option>
+        <option value="high">High</option>
+      </select>
+    </label>
+    <div class="full"><button type="submit">Generate my 7-day plan</button></div>
+  </form>
+</section>
+
+<section class="notice">
+  <strong>Safety:</strong> Start gradually and stop if exercise causes pain or concerning symptoms.
+  For medical conditions or injuries, get guidance from a qualified professional.
+</section>
+{% endblock %}
